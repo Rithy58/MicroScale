@@ -1,0 +1,30 @@
+{
+  "name": "web-app",
+  "version": "1.0.0",
+  "description": "The main web application for the project MicroScale",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rithy58/MicroScale.git"
+  },
+  "keywords": [
+    "microservice",
+    "scale",
+    "docker",
+    "container",
+    "kubernetes",
+    "cloud"
+  ],
+  "author": "SeihakRithy Muth",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Rithy58/MicroScale/issues"
+  },
+  "homepage": "https://github.com/Rithy58/MicroScale#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
