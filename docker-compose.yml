@@ -1,0 +1,20 @@
+version: '3'
+services:
+  web-app:
+    build: ./web-app/
+    ports:
+      - "8080:8080"
+    networks:
+      - micro_scale_net
+
+  web-server:
+    build: ./web-server/
+    depends_on:
+      - web-app
+    ports:
+      - "8000:80"
+    networks:
+      - micro_scale_net
+      
+networks:
+  micro_scale_net:
