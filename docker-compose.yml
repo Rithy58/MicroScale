@@ -1,7 +1,16 @@
 version: '3'
 services:
+  broker:
+    image: rabbitmq:3-management-alpine
+    ports:
+      - 15672:15672
+    networks:
+      - micro_scale_net
+
   web-app:
     build: ./web-app/
+    depends_on:
+      - broker
     ports:
       - "8080:8080"
     networks:
