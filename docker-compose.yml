@@ -15,15 +15,26 @@ services:
       - "8080:8080"
     networks:
       - micro_scale_net
+  
+  web-ui:
+    build: ./web-ui/
+    volumes:
+      - "web_volume:/usr/src/web/ui"
 
   web-server:
     build: ./web-server/
     depends_on:
       - web-app
+      - web-ui
     ports:
       - "8000:80"
     networks:
       - micro_scale_net
+    volumes:
+      - "web_volume:/usr/src/web/ui"
       
 networks:
   micro_scale_net:
+
+volumes:
+  web_volume:
