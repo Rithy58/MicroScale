@@ -1,5 +1,5 @@
-# Start with node image
-FROM node:10-alpine
+# Start with node image as first stage builder
+FROM node:10-alpine AS builder
 
 # Create app directory
 WORKDIR /usr/src/web/ui
@@ -14,4 +14,11 @@ RUN npm install
 # Bundle app source
 COPY . .
 
+# Build the Angular App for Production
 CMD ng build --prod
+
+# Use alpine image as second stage
+FROM alpine:latest
+
+# Copy the built Angular App to this final stage image
+COPY --from=builder /usr/src/web/ui/dist/web-ui/ /usr/src/web/ui/dist/web-ui/
