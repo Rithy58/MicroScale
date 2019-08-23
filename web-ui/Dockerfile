@@ -15,7 +15,7 @@ RUN npm install
 COPY . .
 
 # Build the Angular App for Production
-CMD ng build --prod
+RUN npm run-script prod
 
 # Use alpine image as second stage
 FROM alpine:latest
