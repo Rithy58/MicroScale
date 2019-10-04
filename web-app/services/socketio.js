@@ -8,6 +8,14 @@ const startSocket = function (app, port) {
 
     socketIo.on('connection', (socket) => {
         console.log('user connected');
+
+        socket.on('startProcess', (uid) => {
+            console.log('startProcess for ' + uid);
+        });
+
+        socket.on('addProcess', (uid, pid) => {
+            console.log('addProcess ' + pid + ' for ' + uid);
+        });
     });
 
     server.listen(port);

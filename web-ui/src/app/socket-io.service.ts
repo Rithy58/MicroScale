@@ -5,8 +5,9 @@ import * as io from 'socket.io-client';
   providedIn: 'root'
 })
 export class SocketIoService {
-  private socket;
+  private socket: any;
   private url: string;
+  private uid: number;
 
   constructor() { }
 
@@ -16,6 +17,15 @@ export class SocketIoService {
 
   public connect() {
     this.socket = io(this.url);
+    this.uid = 123;
+  }
+
+  public startProcess() {
+    this.socket.emit('startProcess', this.uid);
+  }
+
+  public addProcess(pid: number) {
+    this.socket.emit('addProcess', this.uid, pid);
   }
 
 }
