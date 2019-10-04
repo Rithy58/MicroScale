@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SocketIoService } from '../socket-io.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,16 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
+  url: string;
 
-  constructor() { }
+  constructor(private socketIoService: SocketIoService) { }
 
   ngOnInit() {
+  }
+
+  connect() {
+    this.socketIoService.setUrl(this.url);
+    this.socketIoService.connect();
   }
 
 }
